@@ -6,11 +6,13 @@
   background: black;
 }
 
-.hero-container .image, .hero-container .content-box {
+.hero-container .image,
+.hero-container .content-box {
   width: 200px;
   flex-grow: 1;
 }
-.hero-container .image {}
+.hero-container .image {
+}
 
 .hero-container .content-box {
   display: flex;
@@ -19,7 +21,7 @@
 }
 
 .hero-container .content-box .title {
-  font-size: 4rem;
+  font-size: 4.5rem;
   font-weight: bold;
   color: white;
   text-align: left;

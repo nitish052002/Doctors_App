@@ -17,9 +17,7 @@ const Card = () => {
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta veniam
         voluptates necessitatibus recusandae tempore maxime repellendus iusto.
         Enim natus saepe harum quae nobis ipsum, exercitationem neque ad quos a
-        doloremque eveniet facere nulla! Exercitationem necessitatibus iste vero
-        voluptas molestiae voluptate blanditiis tempora tempore enim autem
-        praesentium, eveniet velit deserunt voluptatibus.
+        
       </div>
     </div>
   );

@@ -87,6 +87,12 @@
   width: 100%;
   color: black;
   font-weight: bold;
+  
+}
+
+.form label  input:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px white inset; /* Change the color to your own background color */
+    -webkit-text-fill-color: #333;
 }
 
 .submit {
@@ -95,14 +101,14 @@
   border: none;
   outline: none;
   color: #fff;
-  font-size: 1em;
+  font-size: 1.5em;
   border-radius: 8px;
   transition: 0.3s ease;
   cursor: pointer;
 }
 
 .submit:hover {
-  background-color: var(--primary-chng);
+  filter: brightness(50%);
 }
 
 .form label {
@@ -135,7 +141,16 @@
 .form label input:focus + span {
   color: #1ab188;
 }
+.form label {
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: 0.2s;
+}
 
+.form label:focus-within {
+  border:2px solid black;
+   
+}
 .dropdown {
   padding: 1.2rem 0.7rem;
   border: none;
@@ -159,12 +174,13 @@
   color: black;
 }
 
+.dropdown option:checked{
+    color: #181818;
+}
 @media screen and (max-width: 750px) {
   .container {
     flex-direction: column-reverse;
-    height: auto    ;
+    height: auto;
     padding: 8rem 0 1rem 0;
-
   }
- 
 }

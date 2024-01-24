@@ -25,6 +25,13 @@ const Form: React.FC = () => {
     complain: "",
   });
 
+  interface Doctor {
+    name: string;
+    city: string;
+  }
+
+  const [doctors, setDoctors] = useState<Doctor[]>([]);
+
   // function to store form data
 
   const updateFormData = (event: ChangeEvent<HTMLInputElement>) => {
@@ -43,8 +50,17 @@ const Form: React.FC = () => {
     return;
   };
 
+  const filterBestDoctors = (): void => {
+    const bestDoctors = doctorslist.data.filter((doctor) => {
+      return doctor.city.toLowerCase().includes(formData.city.toLowerCase());
+    });
+
+    setDoctors(bestDoctors);
+    console.log(doctors);
+  };
+
   return (
-    <div className="container">
+    <div className="container" id="form">
       <div className="form-container">
         <form autoComplete="off" className="form">
           <p className="title">REGISTER</p>
@@ -80,7 +96,10 @@ const Form: React.FC = () => {
                 type="text"
                 name="city"
                 required
-                onChange={updateFormData}
+                onChange={(event) => {
+                  updateFormData(event);
+                  filterBestDoctors();
+                }}
                 value={formData.city}
               />
               <span>City</span>
@@ -137,7 +156,7 @@ const Form: React.FC = () => {
               <option value="" className="option" selected disabled hidden>
                 Any Relevant Expreience
               </option>
-              <option value="yes" className="option">
+              <option value="yes" className="option" >
                 Yes
               </option>
               <option value="no" className="option">
@@ -156,15 +175,15 @@ const Form: React.FC = () => {
                 fun("doctor", event);
               }}
             >
-              <option value="" className="option" selected disabled hidden>
+              <option value="" className="option" selected disabled hidden >
                 Select Doctor
               </option>
-              {doctorslist.data.map((doctor) => {
+              {doctors.map((doctor) => {
                 return (
                   <option
                     value={doctor.name}
                     className="option"
-                    key={Math.floor((Math.random() * 1000) / 10)}
+                    key={doctor.name + new Date().getTime()}
                   >
                     {doctor.name}
                   </option>
