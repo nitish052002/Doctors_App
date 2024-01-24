@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "name": "Rahul",
+      "city": "Mumbai"
+    },
+    {
+      "name": "Hitesh",
+      "city": "New Delhi"
+    },
+    {
+      "name": "Gagan Kumar",
+      "city": "Haryana"
+    },
+    {
+      "name": "Kotha",
+      "city": "Noida"
+    },
+    {
+      "name": "Ram Sharma",
+      "city": "Patna"
+    },
+    {
+      "name": "Rahul",
+      "city": "Lucknow"
+    }
+  ]
+}

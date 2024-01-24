@@ -9,7 +9,7 @@ function App() {
       <div className="hero__section">
         <Hero />
       </div>
-      <main>
+      <main className="form-section">
         <Form />
       </main>
       <div className="testomonial__section">

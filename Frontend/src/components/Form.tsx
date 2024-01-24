@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import "./form.css";
+import doctorslist from "../db/doctors.json";
 
 interface Form {
   name: string;
@@ -7,7 +8,7 @@ interface Form {
   city: string;
   age: number;
   company: string;
-  any_exp: false;
+  any_exp: string;
   doctor: string;
   complain: string;
 }
@@ -19,23 +20,43 @@ const Form: React.FC = () => {
     city: "",
     age: 0,
     company: "",
-    any_exp: false,
+    any_exp: "",
     doctor: "",
     complain: "",
   });
 
+  // function to store form data
+
+  const updateFormData = (event: ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const fun = (fieldname: string, event: ChangeEvent<HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [fieldname]: event.target.value,
+    });
+
+    return;
+  };
+
   return (
     <div className="container">
       <div className="form-container">
-        <form action="" autoComplete="off" className="form">
+        <form autoComplete="off" className="form">
           <p className="title">REGISTER</p>
           <div className="form-group">
             <label htmlFor="">
               <input
                 className="text-field"
                 type="text"
-                id="firstname"
+                name="name"
                 required
+                onChange={updateFormData}
+                value={formData.name}
               />
               <span>Name</span>
             </label>
@@ -43,8 +64,10 @@ const Form: React.FC = () => {
               <input
                 className="text-field"
                 type="number"
-                id="lastname"
+                name="contact"
                 required
+                onChange={updateFormData}
+                value={formData.contact}
               />
               <span>+91 Contact No</span>
             </label>
@@ -55,8 +78,10 @@ const Form: React.FC = () => {
               <input
                 className="text-field"
                 type="text"
-                id="firstname"
+                name="city"
                 required
+                onChange={updateFormData}
+                value={formData.city}
               />
               <span>City</span>
             </label>
@@ -65,37 +90,87 @@ const Form: React.FC = () => {
               <input
                 className="text-field"
                 type="number"
-                id="lastname"
+                name="age"
+                min={10}
+                max={90}
                 required
+                onChange={updateFormData}
+                value={formData.age}
               />
               <span>Age</span>
             </label>
           </div>
 
           <label htmlFor="">
-            <input className="text-field" type="text" id="email" required />
+            <input
+              className="text-field"
+              type="text"
+              name="company"
+              required
+              onChange={updateFormData}
+              value={formData.company}
+            />
             <span>Company</span>
           </label>
 
           <label htmlFor="">
             <input
               className="text-field"
-              type="password"
-              id="password"
+              type="text"
+              name="complain"
               required
+              onChange={updateFormData}
+              value={formData.complain}
             />
             <span>Chief Complaints</span>
           </label>
           <div className="dropdown-input">
-            <select name="" id="" className="dropdown" required>
-              <option value="" className="option">
+            <select
+              name=""
+              id=""
+              className="dropdown"
+              required
+              onChange={(event) => {
+                fun("any_exp", event);
+              }}
+            >
+              <option value="" className="option" selected disabled hidden>
+                Any Relevant Expreience
+              </option>
+              <option value="yes" className="option">
                 Yes
               </option>
-              <option value="" className="option">
+              <option value="no" className="option">
                 No
               </option>
             </select>
-             
+          </div>
+
+          <div className="select-doctortr">
+            <select
+              name=""
+              id=""
+              className="dropdown"
+              required
+              onChange={(event) => {
+                fun("doctor", event);
+              }}
+            >
+              <option value="" className="option" selected disabled hidden>
+                Select Doctor
+              </option>
+              {doctorslist.data.map((doctor) => {
+                return (
+                  <option
+                    value={doctor.name}
+                    className="option"
+                    key={Math.floor((Math.random() * 1000) / 10)}
+                  >
+                    {doctor.name}
+                  </option>
+                );
+              })}
+            </select>
           </div>
 
           <button type="submit" className="submit">
@@ -105,7 +180,7 @@ const Form: React.FC = () => {
       </div>
 
       <div className="side-content">
-        <div className="text-one">Fill Up Form The</div>
+        <div className="text-one">Fill Up Form </div>
         <div className="text-two">To Connect With</div>
         <div className="text-three">Our Best Doctor</div>
       </div>

@@ -6,10 +6,11 @@
   background: black;
 }
 
-.hero-container .image .content-box {
+.hero-container .image, .hero-container .content-box {
   width: 200px;
   flex-grow: 1;
 }
+.hero-container .image {}
 
 .hero-container .content-box {
   display: flex;

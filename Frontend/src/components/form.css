@@ -79,12 +79,14 @@
 }
 
 .form label input {
-  padding: 1.2rem 0.7rem;
+  padding: 1.4rem 0.7rem;
   border: none;
   outline: none;
   transition: 0.3s ease;
   border-radius: 8px;
   width: 100%;
+  color: black;
+  font-weight: bold;
 }
 
 .submit {
@@ -124,7 +126,7 @@
 
 .form label input:valid + span,
 .form label input:focus + span {
-  top: 30px;
+  top: 35px;
   font-size: 0.7em;
   font-weight: 600;
 }
@@ -147,18 +149,22 @@
   position: relative;
 }
 
-
-
-
- 
-
 .dropdown .option {
-  padding: 1.2rem  ;
+  padding: 1rem 4rem;
   border: none;
   outline: none;
   transition: 0.3s ease;
   width: 100%;
   background-color: white;
   color: black;
+}
 
+@media screen and (max-width: 750px) {
+  .container {
+    flex-direction: column-reverse;
+    height: auto    ;
+    padding: 8rem 0 1rem 0;
+
+  }
+ 
 }
