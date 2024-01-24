@@ -1,0 +1,26 @@
+.header_section {
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+    padding: 2rem 3rem;
+    align-items: center;
+    background: black;
+  }
+  
+  .header_title {
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .header__image {
+    width: 70px;
+    height: 70px;
+    shape-outside: circle();
+    clip-path: circle();
+    cursor: pointer;
+  }
+  .header__image img {
+    width: 100%;
+  }

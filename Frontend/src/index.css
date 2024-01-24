@@ -22,18 +22,14 @@
   border: none;
   outline: none;
   text-decoration: none;
-  transition: 0.3s;
 }
 
- /* Chrome, Safari, Edge, Opera */
+/* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
- 
-
 
 html {
   --text-color-normal: #0a244d;
