@@ -1,0 +1,26 @@
+.testomonial-container  .testomonial__content{
+    display: flex;
+    overflow: hidden;
+    /* position: relative; */
+}
+.testomonial-container .title{
+    font-size: 3rem;
+    font-weight: bold;
+    padding: 1rem 0;
+    position: relative;
+    color: white;
+}
+.testomonial-container .title::after {
+    content: "";     
+    width: 350px;
+    border: 2px solid #1ab188;
+    border-radius: 4px;
+    transform: rotate(180deg);
+    position: absolute;
+    top: 80px;
+    left: 38%;
+
+}
+
+
+

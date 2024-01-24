@@ -1,0 +1,43 @@
+.card-container {
+  width: 400px;
+  background: #181818;
+  border-radius: 10px;
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.card-container .customer_profile .image_container {
+  width: 150px;
+  height: 150px;
+  margin: 20px;
+  shape-outside: circle();
+  clip-path: circle();
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container .customer_name {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.card-container .rating {
+  padding: 0rem 0 3rem 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.card-container .customer__feedback {
+  font-size: 1em;
+  font-weight: 400;
+  font-style: italic;
+  text-align: center;
+}

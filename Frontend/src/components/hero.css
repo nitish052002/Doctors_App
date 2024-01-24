@@ -1,0 +1,53 @@
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 3rem;
+  background: black;
+}
+
+.hero-container .image .content-box {
+  width: 200px;
+  flex-grow: 1;
+}
+
+.hero-container .content-box {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.hero-container .content-box .title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: white;
+  text-align: left;
+}
+
+.hero-container .content-box .title .problem {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #1ab188;
+  text-align: left;
+}
+
+.book-btn {
+  padding: 20px 30px;
+  background: #1ab188;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid transparent;
+}
+
+.book-btn:hover {
+  border: 1px solid #1ab188;
+  background: white;
+  color: black;
+}
+
+.hero-container .image {
+}

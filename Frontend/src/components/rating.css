@@ -1,0 +1,45 @@
+.rating-container {
+  width: 100px;
+}
+
+.rating-wrapper {
+  direction: rtl;
+  display: flex;
+  gap: 30px;
+}
+
+.rating-wrapper div {
+  display: inline-block;
+  width: 100px;
+  position: relative;
+  cursor: pointer;
+}
+
+.rating-wrapper div::before {
+  content: "\2605";
+  position: absolute;
+  font-size: 30px;
+  display: inline-block;
+  top: 0;
+  left: 0;
+}
+
+.rating-wrapper div::after {
+  content: "\2605";
+  position: absolute;
+  font-size: 30px;
+  display: inline-block;
+  top: 0px;
+  left: 0;
+  color: #1ab188;
+  opacity: 0;
+}
+.rating-wrapper label:hover:after,
+.rating-wrapper input:checked ~ label:after,
+.rating-wrapper label:hover ~ label:after {
+  opacity: 1;
+}
+
+.rating-wrapper div.active:after {
+  opacity: 1;
+}

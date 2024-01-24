@@ -1,0 +1,164 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+.side-content,
+.form-container {
+  flex-grow: 1;
+}
+
+.side-content {
+  text-align: center;
+  padding-right: 3rem;
+  line-height: 4.5rem;
+}
+.side-content .text-one {
+  font-size: 4rem;
+  font-weight: bold;
+  color: white;
+}
+.side-content .text-two {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #1ab188;
+}
+
+.side-content .text-three {
+  font-size: 4rem;
+  font-weight: bold;
+  color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 3rem;
+  background-color: #1ab188;
+  width: 500pxpx;
+  border-radius: 8px;
+  margin: 5rem 1rem;
+  gap: 10px;
+  margin-left: 3rem;
+}
+
+.text-field {
+  background: white;
+}
+
+.form-group {
+  display: flex;
+  gap: 6px;
+}
+.form-group label {
+  flex-grow: 1;
+}
+
+.login-input {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.title {
+  color: var(--primary);
+  letter-spacing: 0.8px;
+  line-height: 4rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.signin {
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+}
+
+.signin a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.form label input {
+  padding: 1.2rem 0.7rem;
+  border: none;
+  outline: none;
+  transition: 0.3s ease;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.submit {
+  background-color: #181818;
+  padding: 20px 30px;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1em;
+  border-radius: 8px;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background-color: var(--primary-chng);
+}
+
+.form label {
+  position: relative;
+}
+
+.form label input:placeholder-shown + span {
+  top: 15px;
+  font-size: 1em;
+}
+
+.form label input + span {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  color: #cacaca;
+  font-size: 1em;
+  transition: 0.3s ease;
+  padding: 4px 0;
+}
+
+.form label input:valid + span,
+.form label input:focus + span {
+  top: 30px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.form label input:valid + span,
+.form label input:focus + span {
+  color: #1ab188;
+}
+
+.dropdown {
+  padding: 1.2rem 0.7rem;
+  border: none;
+  outline: none;
+  transition: 0.3s ease;
+  border-radius: 8px;
+  width: 100%;
+  background-color: white;
+  color: #cacaca;
+  font-size: 1em;
+  position: relative;
+}
+
+
+
+
+ 
+
+.dropdown .option {
+  padding: 1.2rem  ;
+  border: none;
+  outline: none;
+  transition: 0.3s ease;
+  width: 100%;
+  background-color: white;
+  color: black;
+
+}
