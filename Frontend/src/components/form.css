@@ -1,30 +1,38 @@
 .container {
   display: flex;
   align-items: center;
+  padding: 0px 2rem;
 }
-.side-content,
-.form-container {
+.side-content {
   flex-grow: 1;
+}
+.form-container {
+  flex-basis: 700px;
 }
 
 .side-content {
   text-align: center;
-  padding-right: 3rem;
   line-height: 4.5rem;
+  font-size: 2rem;
+  position: relative;
+  width: 100%;
 }
 .side-content .text-one {
   font-size: 4rem;
   font-weight: bold;
   color: white;
+  text-wrap: nowrap;
 }
 .side-content .text-two {
   font-size: 5rem;
+  text-wrap: nowrap;
   font-weight: bold;
   color: #1ab188;
 }
 
 .side-content .text-three {
   font-size: 4rem;
+  text-wrap: nowrap;
   font-weight: bold;
   color: white;
 }
@@ -34,7 +42,7 @@
   flex-direction: column;
   padding: 1rem 3rem;
   background-color: #1ab188;
-  width: 500pxpx;
+  max-width: 500px;
   border-radius: 8px;
   margin: 5rem 1rem;
   gap: 10px;
@@ -87,12 +95,11 @@
   width: 100%;
   color: black;
   font-weight: bold;
-  
 }
 
-.form label  input:-webkit-autofill {
-    -webkit-box-shadow:0 0 0 50px white inset; /* Change the color to your own background color */
-    -webkit-text-fill-color: #333;
+.form label input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 50px white inset; /* Change the color to your own background color */
+  -webkit-text-fill-color: #333;
 }
 
 .submit {
@@ -148,8 +155,7 @@
 }
 
 .form label:focus-within {
-  border:2px solid black;
-   
+  border: 2px solid black;
 }
 .dropdown {
   padding: 1.2rem 0.7rem;
@@ -174,13 +180,54 @@
   color: black;
 }
 
-.dropdown option:checked{
-    color: #181818;
+.dropdown option:checked {
+  color: #181818;
 }
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 1200px) {
   .container {
     flex-direction: column-reverse;
     height: auto;
-    padding: 8rem 0 1rem 0;
+    padding: 18rem 0 1rem 0;
   }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 3rem;
+    background-color: #1ab188;
+    max-width: 500px;
+    border-radius: 8px;
+    margin: 5rem 0rem;
+    gap: 10px;
+ 
+  }
+}
+
+
+
+@media screen and (max-width: 550px) {
+  .form {
+   padding: 1rem;
+  }
+}
+
+@media screen and (max-width : 750px){
+  .side-content .text-one {
+    font-size:3.5rem;
+     text-wrap: wrap;
+   
+  }
+  .side-content .text-two {
+    font-size: 4rem;
+     text-wrap: wrap;
+ 
+  }
+  
+  .side-content .text-three {
+    font-size: 3.5rem;
+    text-wrap: wrap;
+   
+  }
+  
+  
 }

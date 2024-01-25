@@ -8,11 +8,11 @@
 
 .hero-container .image,
 .hero-container .content-box {
-  width: 200px;
+ 
   flex-grow: 1;
 }
-.hero-container .image {
-}
+ 
+
 
 .hero-container .content-box {
   display: flex;
@@ -52,5 +52,38 @@
   color: black;
 }
 
-.hero-container .image {
+.hero-container .image img{
+  width: 100%;
 }
+
+@media screen and (max-width: 1200px) {
+  .hero-container {
+    flex-direction: column;
+    height: auto;
+    padding: 0rem 0 1rem 0;
+  }
+}
+
+
+@media screen and (max-width:550px) {
+  
+.hero-container .content-box {
+ padding: 0 1.5rem;
+}
+
+.hero-container .image img{
+  width: 88%;
+}
+
+.hero-container .image {
+  display: flex;
+  justify-content: center;
+}
+
+
+.hero-container {
+  gap: 20px;
+}
+  
+}
+

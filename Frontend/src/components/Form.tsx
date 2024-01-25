@@ -13,6 +13,14 @@ interface Form {
   complain: string;
 }
 
+
+
+interface Doctor {
+  name: string;
+  city: string;
+}
+
+
 const Form: React.FC = () => {
   const [formData, setFormData] = useState<Form>({
     name: "",
@@ -24,11 +32,6 @@ const Form: React.FC = () => {
     doctor: "",
     complain: "",
   });
-
-  interface Doctor {
-    name: string;
-    city: string;
-  }
 
   const [doctors, setDoctors] = useState<Doctor[]>([]);
 

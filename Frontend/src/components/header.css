@@ -2,7 +2,7 @@
     display: flex;
     justify-content: start;
     gap: 5px;
-    padding: 2rem 3rem;
+    padding: 2rem 5rem;
     align-items: center;
     background: black;
   }
@@ -23,4 +23,19 @@
   }
   .header__image img {
     width: 100%;
+  }
+
+  @media screen and (max-width : 550px) {
+    .header__image {
+      width: 50px;
+      height: 50px;
+     
+    }
+
+    .header_section {
+         padding: 2rem 3rem;
+    
+    }
+    
+    
   }

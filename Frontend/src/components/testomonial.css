@@ -1,26 +1,39 @@
-.testomonial-container  .testomonial__content{
-    display: flex;
-    overflow: hidden;
-    /* position: relative; */
+.testomonial-container .testomonial__content {
+  display: flex;
+  overflow: auto;
 }
-.testomonial-container .title{
-    font-size: 3rem;
-    font-weight: bold;
-    padding: 1rem 0;
-    position: relative;
-    color: white;
+.testomonial-container .title {
+  font-size: 3rem;
+  font-weight: bold;
+  padding: 1rem 0;
+  position: relative;
+  color: white;
 }
+
+::-webkit-scrollbar {
+ width: 10px;
+ height: 8px;
+}
+
+.testomonial-container .testomonial__content::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.testomonial-container .testomonial__content::-webkit-scrollbar-track {
+  border-radius: 8px;
+}
+
+/* Handle */
+.testomonial-container .testomonial__content::-webkit-scrollbar-thumb {
+  background:  #1ab188;
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+.testomonial-container .testomonial__content::-webkit-scrollbar-thumb:hover {
+  background:  #1caf88;
+}
+
 .testomonial-container .title::after {
-    content: "";     
-    width: 350px;
-    border: 2px solid #1ab188;
-    border-radius: 4px;
-    transform: rotate(180deg);
-    position: absolute;
-    top: 80px;
-    left: 38%;
-
 }
-
-
-

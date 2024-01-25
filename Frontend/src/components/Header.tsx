@@ -6,7 +6,7 @@ const Header = () => {
       <div className="header__image">
         <img src={logo} alt="" />
       </div>
-      <div className="header_title">Heath</div>
+      <div className="header_title">Health</div>
     </header>   
   );
 };
