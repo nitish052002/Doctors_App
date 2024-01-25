@@ -1,9 +1,17 @@
 const DOCTOR__DB = require("../models/doctors.model");
 
-export class DOCTORS_SCHEMA_SERVICES {
-  filterBestDoctorsByCity = (cityName) => {
+class DOCTORS_SCHEMA_SERVICES {
+  filterBestDoctorsByCity = async (cityName) => {
+    console.log(cityName);
     try {
-      const data = DOCTOR__DB.find({});
-    } catch (error) {}
+      const data = await DOCTOR__DB.find({
+        city: { $regex: new RegExp(cityName, "i") },
+      });
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
+
+module.exports = DOCTORS_SCHEMA_SERVICES;

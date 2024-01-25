@@ -1,8 +1,5 @@
-const { getBestDoctorController } = require("../controller/doctor.controller")
+const getBestDoctorController = require("../controller/doctor.controller");
+const router = require("express").Router();
+router.get("/doctors", getBestDoctorController);
 
-const router = require("express").Router()
-
-
-router.get("/",getBestDoctorController)
- 
-
+module.exports = router;

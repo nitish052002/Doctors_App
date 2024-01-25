@@ -4,5 +4,4 @@ const doctorSchema = new mongoose.Schema({
   city: String,
 });
 
-
-module.exports  = mongoose.model(doctorSchema)
+module.exports = mongoose.model("doctors", doctorSchema);
