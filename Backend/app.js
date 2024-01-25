@@ -10,12 +10,14 @@ app.use(express.json());
 
 app.use("/v1", doctorRouter);
 
-// mongoose.connect(process.env.DB_URL).then(() => {
-mongoose.connect(process.env.DB_URL).then(() => {
-  app.listen(8081, () => {
-    console.log("Server is running 8081");
-    console.log("DB Connected");
+mongoose
+  .connect(process.env.DB_URL)
+  .then(() => {
+    app.listen(8081, () => {
+      console.log("Server is running 8081");
+      console.log("DB Connected");
+    });
+  })
+  .catch((error) => {
+    console.log(error.message);
   });
-}).catch(error => {
-  console.log(error.message)
-})
