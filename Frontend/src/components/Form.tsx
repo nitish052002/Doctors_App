@@ -1,6 +1,8 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import "./form.css";
-import doctorslist from "../db/doctors.json";
+import axios from "axios";
+import { base_url } from "../ipConfig.json"
+
 
 interface Form {
   name: string;
@@ -18,6 +20,7 @@ interface Form {
 interface Doctor {
   name: string;
   city: string;
+  _id: string
 }
 
 
@@ -34,6 +37,23 @@ const Form: React.FC = () => {
   });
 
   const [doctors, setDoctors] = useState<Doctor[]>([]);
+
+
+  useEffect(() => {
+    const getDocotorsListByCity = async () => {
+      try {
+        const result = await axios.get(`${base_url}?city=${formData.city.toLowerCase()}`)
+        const data = result.data
+        setDoctors(data)
+        console.log("RESULT   ", doctors)
+        // setDoctors(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    getDocotorsListByCity()
+  }, [formData.city])
 
   // function to store form data
 
@@ -53,14 +73,7 @@ const Form: React.FC = () => {
     return;
   };
 
-  const filterBestDoctors = (): void => {
-    const bestDoctors = doctorslist.data.filter((doctor) => {
-      return doctor.city.toLowerCase().includes(formData.city.toLowerCase());
-    });
 
-    setDoctors(bestDoctors);
-    console.log(doctors);
-  };
 
   return (
     <div className="container" id="form">
@@ -101,7 +114,7 @@ const Form: React.FC = () => {
                 required
                 onChange={(event) => {
                   updateFormData(event);
-                  filterBestDoctors();
+
                 }}
                 value={formData.city}
               />
@@ -186,7 +199,7 @@ const Form: React.FC = () => {
                   <option
                     value={doctor.name}
                     className="option"
-                    key={doctor.name + new Date().getTime()}
+                    key={doctor._id}
                   >
                     {doctor.name}
                   </option>
