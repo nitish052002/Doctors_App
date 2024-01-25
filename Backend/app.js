@@ -13,8 +13,8 @@ app.use("/v1", doctorRouter);
 mongoose
   .connect(process.env.DB_URL)
   .then(() => {
-    app.listen(8081, () => {
-      console.log("Server is running 8081");
+    app.listen(process.env.PORT, () => {
+      console.log(`Server is running ${process.env.PORT}`);
       console.log("DB Connected");
     });
   })
