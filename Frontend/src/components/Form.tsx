@@ -4,13 +4,13 @@ import axios from "axios";
 import { base_url } from "../ipConfig.json";
 import Loader from "./Loader";
 
-type Num = number | string;
+
 
 interface Form {
   name: string;
-  contact: Num;
+  contact: number;
   city: string;
-  age: Num;
+  age: number;
   company: string;
   any_exp: string;
   doctor: string;
@@ -26,9 +26,9 @@ interface Doctor {
 const Form: React.FC = () => {
   const [formData, setFormData] = useState<Form>({
     name: "",
-    contact: "",
+    contact: Number(),
     city: "",
-    age: "",
+    age: Number(),
     company: "",
     any_exp: "",
     doctor: "",
@@ -125,9 +125,9 @@ const Form: React.FC = () => {
                 name="contact"
                 required
                 onChange={updateFormData}
-                value={formData.contact}
+                value={formData.contact > 0 ? formData.age : ""}
               />
-              <span>+91 Contact No</span>
+              <span>+91</span>
             </label>
           </div>
 
@@ -144,7 +144,7 @@ const Form: React.FC = () => {
                 }}
                 value={formData.city}
               />
-              <span>Search for city ( e.g Delhi ) </span>
+              <span>City ( e.g Delhi ) </span>
             </label>
 
             <label htmlFor="">
@@ -156,7 +156,7 @@ const Form: React.FC = () => {
                 max={90}
                 required
                 onChange={updateFormData}
-                value={formData.age}
+                value={formData.age > 0 ? formData.age : ""}
               />
               <span>Age</span>
             </label>
@@ -194,8 +194,10 @@ const Form: React.FC = () => {
               onChange={(event) => {
                 fun("any_exp", event);
               }}
+              disabled={(formData.age < 40)}
+
             >
-              <option value="" className="option" disabled hidden>
+              <option value="" className="option"   >
                 Any Relevant Expreience
               </option>
               <option value="yes" className="option">
