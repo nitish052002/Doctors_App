@@ -181,9 +181,14 @@
   color: black;
 }
 
-.dropdown option:checked {
-  color: #181818;
+.select-style select option:checked {
+  /* Style for the selected option */
+  background-color: #a5dc86; /* Change this to the desired background color */
+  color: #000; /* Change this to the desired text color */
+  font-weight: bold; /* Optional: Change this to adjust the font weight */
 }
+
+
 @media screen and (max-width: 1200px) {
   .container {
     flex-direction: column-reverse;
@@ -200,35 +205,27 @@
     border-radius: 8px;
     margin: 5rem 0rem;
     gap: 10px;
- 
   }
 }
-
-
 
 @media screen and (max-width: 550px) {
   .form {
-   padding: 1rem;
+    padding: 1rem;
   }
 }
 
-@media screen and (max-width : 750px){
+@media screen and (max-width: 750px) {
   .side-content .text-one {
-    font-size:3.5rem;
-     text-wrap: wrap;
-   
+    font-size: 3.5rem;
+    text-wrap: wrap;
   }
   .side-content .text-two {
     font-size: 4rem;
-     text-wrap: wrap;
- 
+    text-wrap: wrap;
   }
-  
+
   .side-content .text-three {
     font-size: 3.5rem;
     text-wrap: wrap;
-   
   }
-  
-  
 }

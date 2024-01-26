@@ -77,6 +77,7 @@ const Form: React.FC = () => {
         const data = result.data;
         if (result.status === 200 && data.length) {
           // Successful response (status code 200)F
+          console.log(doctors)
           setDoctors(data);
           setLoading(false);
         }
