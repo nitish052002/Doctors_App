@@ -33,3 +33,9 @@
     padding: 0 2rem;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .form-section {
+    padding: 0 1rem;
+  }
+}

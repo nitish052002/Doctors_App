@@ -1,5 +1,6 @@
 .card-container {
   width: 400px;
+  max-width: 400px;
   background: #181818;
   border-radius: 10px;
   padding: 2rem;
@@ -43,4 +44,12 @@
   font-style: italic;
   text-align: center;
   text-wrap: wrap;
+}
+
+@media screen and (max-width:550px) { 
+  .card-container {
+    margin-left: 0;
+    /* padding-bottom:4rem ; */
+  }
+  
 }
