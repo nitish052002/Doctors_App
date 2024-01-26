@@ -144,7 +144,7 @@ const Form: React.FC = () => {
                 }}
                 value={formData.city}
               />
-              <span>City</span>
+              <span>Search for city ( e.g Delhi ) </span>
             </label>
 
             <label htmlFor="">

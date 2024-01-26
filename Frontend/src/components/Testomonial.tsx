@@ -8,7 +8,7 @@ const Testomonial = () => {
 
       <div className="testomonial__content">
         {
-          data.map(data => <Card Data={data} />)
+          data.map((data,index) => <Card Data={data} key={index}/>)
         }
       </div>
     </div>
