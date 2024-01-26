@@ -12,9 +12,9 @@ function App() {
       <div className="hero__section">
         <Hero />
       </div>
-      <main className="form-section">
+      <div className="form-section">
         <Form />
-      </main>
+      </div>
       <div className="testomonial__section">
         <Testomonial />
       </div>

@@ -1,6 +1,6 @@
 import "./header.css";
 import logo from "../assets/logo3.png";
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <header className="header_section">
       <div className="header__image">

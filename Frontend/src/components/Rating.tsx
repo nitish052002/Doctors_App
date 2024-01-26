@@ -1,5 +1,4 @@
 import "./rating.css";
- 
 
 interface Check {
   first: boolean;
@@ -20,7 +19,13 @@ interface Check {
   
 */
 
-function Rating({ first, second, third, fourth, all }: Partial<Check>) {
+const Rating: React.FC <Partial<Check>> = ({
+  first,
+  second,
+  third,
+  fourth,
+  all,
+}: Partial<Check>) => {
   return (
     <div className="rating-container">
       <div className="rating-wrapper">
@@ -53,6 +58,6 @@ function Rating({ first, second, third, fourth, all }: Partial<Check>) {
       </div>
     </div>
   );
-}
+};
 
 export default Rating;

@@ -1,35 +1,34 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import "./form.css";
 import axios from "axios";
-import { base_url } from "../ipConfig.json"
+import { base_url } from "../ipConfig.json";
+import Loader from "./Loader";
 
+type Num = number | string;
 
 interface Form {
   name: string;
-  contact: number;
+  contact: Num;
   city: string;
-  age: number;
+  age: Num;
   company: string;
   any_exp: string;
   doctor: string;
   complain: string;
 }
 
-
-
 interface Doctor {
   name: string;
   city: string;
-  _id: string
+  _id: string;
 }
-
 
 const Form: React.FC = () => {
   const [formData, setFormData] = useState<Form>({
     name: "",
-    contact: 0,
+    contact: "",
     city: "",
-    age: 0,
+    age: "",
     company: "",
     any_exp: "",
     doctor: "",
@@ -37,23 +36,23 @@ const Form: React.FC = () => {
   });
 
   const [doctors, setDoctors] = useState<Doctor[]>([]);
-
+  const [isLoading,setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     const getDocotorsListByCity = async () => {
       try {
-        const result = await axios.get(`${base_url}?city=${formData.city.toLowerCase()}`)
-        const data = result.data
-        setDoctors(data)
-        console.log("RESULT   ", doctors)
-        // setDoctors(data)
+        const result = await axios.get(
+          `${base_url}?city=${formData.city.toLowerCase()}`
+        );
+        const data = result.data;
+        setDoctors(data);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
+    };
 
-    getDocotorsListByCity()
-  }, [formData.city])
+    getDocotorsListByCity();
+  }, [formData.city]);
 
   // function to store form data
 
@@ -65,15 +64,24 @@ const Form: React.FC = () => {
   };
 
   const fun = (fieldname: string, event: ChangeEvent<HTMLSelectElement>) => {
+    setLoading(true)
     setFormData({
       ...formData,
       [fieldname]: event.target.value,
     });
 
     return;
+
+
   };
 
 
+
+  useEffect(()=> {
+     if(!formData.city) {
+      setDoctors([])
+     }
+  },[formData])
 
   return (
     <div className="container" id="form">
@@ -114,7 +122,6 @@ const Form: React.FC = () => {
                 required
                 onChange={(event) => {
                   updateFormData(event);
-
                 }}
                 value={formData.city}
               />
@@ -172,7 +179,7 @@ const Form: React.FC = () => {
               <option value="" className="option" selected disabled hidden>
                 Any Relevant Expreience
               </option>
-              <option value="yes" className="option" >
+              <option value="yes" className="option">
                 Yes
               </option>
               <option value="no" className="option">
@@ -182,30 +189,34 @@ const Form: React.FC = () => {
           </div>
 
           <div className="select-doctortr">
-            <select
-              name=""
-              id=""
-              className="dropdown"
-              required
-              onChange={(event) => {
-                fun("doctor", event);
-              }}
-            >
-              <option value="" className="option" selected disabled hidden >
-                Select Doctor
-              </option>
-              {doctors.map((doctor) => {
-                return (
-                  <option
-                    value={doctor.name}
-                    className="option"
-                    key={doctor._id}
-                  >
-                    {doctor.name}
-                  </option>
-                );
-              })}
-            </select>
+            {!formData.city || isLoading ?(
+              <div className="dropdown">
+                <Loader />
+              </div>
+            ) : (
+              <select
+                name=""
+                id=""
+                className="dropdown"
+                required
+                onChange={(event) => {
+                  fun("doctor", event);
+                }}
+              >
+                <option value="" className="" selected disabled hidden>Select Doctor</option>
+                {doctors.map((doctor) => {
+                  return (
+                    <option
+                      value={doctor.name}
+                      className="option"
+                      key={doctor._id}
+                    >
+                      {doctor.name}
+                    </option>
+                  );
+                })}
+              </select>
+            )}
           </div>
 
           <button type="submit" className="submit">

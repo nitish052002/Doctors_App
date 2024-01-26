@@ -1,8 +1,8 @@
 .app {
   width: 100%;
   background: #282828;
- 
-  
+
+  height: 100%;
 }
 
 .hero__section {
@@ -17,4 +17,19 @@
   padding: 0 3rem 3rem 3rem;
 }
 
+.form-section {
+  padding-top: 4rem;
+}
 
+@media screen and (min-width: 1000px) {
+  .app {
+    margin: 0 auto;
+    max-width: 1600px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .form-section {
+    padding: 0 2rem;
+  }
+}
