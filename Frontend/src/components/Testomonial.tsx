@@ -4,7 +4,7 @@ import { data } from "../db/user.json"
 const Testomonial = () => {
   return (
     <div className="testomonial-container">
-      <div className="title">Testomonial</div>
+      <div className="title">Our Customers</div>
 
       <div className="testomonial__content">
         {
