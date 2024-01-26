@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import "./form.css";
 import axios from "axios";
 import { base_url } from "../ipConfig.json";
@@ -36,27 +36,22 @@ const Form: React.FC = () => {
   });
 
   const [doctors, setDoctors] = useState<Doctor[]>([]);
-  const [isLoading,setLoading] = useState<boolean>(false)
-
-  useEffect(() => {
-    const getDocotorsListByCity = async () => {
-      try {
-        const result = await axios.get(
-          `${base_url}?city=${formData.city.toLowerCase()}`
-        );
-        const data = result.data;
-        setDoctors(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getDocotorsListByCity();
-  }, [formData.city]);
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const [timer, setTimeOut] = useState<number>();
 
   // function to store form data
 
   const updateFormData = (event: ChangeEvent<HTMLInputElement>) => {
+    // if (!formData.city) {
+    //   setDoctors([]);
+    // }
+    if (event.target.name === "city") {
+      if (event.target.value.length < 1) {
+        setDoctors([]);
+        setLoading(false);
+      }
+      setLoading(true);
+    }
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
@@ -64,24 +59,46 @@ const Form: React.FC = () => {
   };
 
   const fun = (fieldname: string, event: ChangeEvent<HTMLSelectElement>) => {
-    setLoading(true)
     setFormData({
       ...formData,
       [fieldname]: event.target.value,
     });
 
     return;
-
-
   };
 
+  const callback = async (city: string) => {
+    try {
+      if (city) {
+        const result = await axios.get(
+          `${base_url}?city=${city.toLowerCase()}`
+        );
+        setLoading(true);
+        const data = result.data;
+        if (result.status === 200 && data.length) {
+          // Successful response (status code 200)F
+          setDoctors(data);
+          setLoading(false);
+        }
+      }
+    } catch (error) {
+      setLoading(true);
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  //  imlementing debouncinf when user will search for city
 
-  useEffect(()=> {
-     if(!formData.city) {
-      setDoctors([])
-     }
-  },[formData])
+  const citySearchHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    if (timer) clearTimeout(timer);
+
+    const newTimer = setTimeout(() => {
+      callback(event.target.value);
+    }, 800);
+    setTimeOut(newTimer);
+  };
 
   return (
     <div className="container" id="form">
@@ -121,6 +138,7 @@ const Form: React.FC = () => {
                 name="city"
                 required
                 onChange={(event) => {
+                  citySearchHandler(event);
                   updateFormData(event);
                 }}
                 value={formData.city}
@@ -176,7 +194,7 @@ const Form: React.FC = () => {
                 fun("any_exp", event);
               }}
             >
-              <option value="" className="option" selected disabled hidden>
+              <option value="" className="option" disabled hidden>
                 Any Relevant Expreience
               </option>
               <option value="yes" className="option">
@@ -189,11 +207,11 @@ const Form: React.FC = () => {
           </div>
 
           <div className="select-doctortr">
-            {!formData.city || isLoading ?(
+            {isLoading ? (
               <div className="dropdown">
                 <Loader />
               </div>
-            ) : (
+            ) : doctors.length ? (
               <select
                 name=""
                 id=""
@@ -203,7 +221,9 @@ const Form: React.FC = () => {
                   fun("doctor", event);
                 }}
               >
-                <option value="" className="" selected disabled hidden>Select Doctor</option>
+                <option value="" className="" disabled hidden>
+                  Select Doctor
+                </option>
                 {doctors.map((doctor) => {
                   return (
                     <option
@@ -211,11 +231,13 @@ const Form: React.FC = () => {
                       className="option"
                       key={doctor._id}
                     >
-                      {doctor.name}
+                      Dr.{doctor.name}
                     </option>
                   );
                 })}
               </select>
+            ) : (
+              <div className="dropdown">No Doctors Found</div>
             )}
           </div>
 
