@@ -212,10 +212,11 @@
   border-radius: 8px;
   display: none;
   transition: 0.3s;
+ 
 }
 
 .success.active {
-  display: flex;  
+  display: flex;    
 
 }
 

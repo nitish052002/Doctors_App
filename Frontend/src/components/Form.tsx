@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import "./form.css";
 import axios from "axios";
 import { base_url } from "../ipConfig.json";
@@ -99,7 +99,18 @@ const Form: React.FC = () => {
     setTimeOut(newTimer);
   };
 
-  const onSubmit = () => {
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (
+      !formData.age ||
+      formData.any_exp === "" ||
+      formData.name === "" ||
+      formData.company === "" ||
+      !formData.contact ||
+      formData.doctor === ""
+    ) {
+      return null;
+    }
     setSubmiteLoader(true);
     setTimeout(() => {
       setFormData({
@@ -116,7 +127,6 @@ const Form: React.FC = () => {
       setTooltip(true);
     }, 2000);
 
-     
     setTimeout(() => {
       setTooltip(false);
     }, 4000);
@@ -264,7 +274,7 @@ const Form: React.FC = () => {
             )}
           </div>
 
-          <button type="submit" className="submit" onClick={onSubmit} disabled={submitLoader}>
+          <button type="submit" className="submit" onClick={onSubmit}>
             {submitLoader ? <SubmitLoader /> : "Submit"}
           </button>
           <div className={tooltip ? "success active" : "success"}>Success</div>
