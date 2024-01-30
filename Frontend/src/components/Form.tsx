@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import "./form.css";
 import axios from "axios";
 import { base_url } from "../ipConfig.json";
@@ -99,8 +99,8 @@ const Form: React.FC = () => {
     setTimeOut(newTimer);
   };
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
+  const onSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
     if (
       !formData.age ||
       formData.any_exp === "" ||
@@ -274,7 +274,7 @@ const Form: React.FC = () => {
             )}
           </div>
 
-          <button type="submit" className="submit" onClick={onSubmit}>
+          <button className="submit" onClick={onSubmit}>
             {submitLoader ? <SubmitLoader /> : "Submit"}
           </button>
           <div className={tooltip ? "success active" : "success"}>Success</div>
