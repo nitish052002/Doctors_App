@@ -1,0 +1,64 @@
+.pl1 {
+  justify-content: space-around;
+}
+.pl1__a,
+.pl1__b,
+.pl1__c {
+  border-radius: 50%;
+  width: 0.68em;
+  height: 0.68em;
+  transform-origin: 50% 100%;
+  margin-bottom: 0.80em;
+}
+
+.pl1__a,
+.pl1__b,
+.pl1__c {
+  animation: bounce1 1s linear infinite;
+}
+
+.pl1 {
+  display: flex;
+  width: 4em;
+  height: 2.2em;
+}
+.pl1__a {
+  background: white;
+}
+.pl1__b {
+  background: white;
+  animation-delay: 0.1s;
+}
+.pl1__c {
+  background: white;
+  animation-delay: 0.2s;
+}
+
+/* Animations */
+@keyframes bounce1 {
+  from,
+  to {
+    transform: translateY(0) scale(1, 1);
+    animation-timing-function: ease-in;
+  }
+  45% {
+    transform: translateY(1em) scale(1, 1);
+    animation-timing-function: linear;
+  }
+  50% {
+    transform: translateY(2em) scale(1.5, 0.5);
+    animation-timing-function: linear;
+  }
+  55% {
+    transform: translateY(2em) scale(1, 1);
+    animation-timing-function: ease-out;
+  }
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17181c;
+    --fg: #e3e4e8;
+  }
+}

@@ -7,12 +7,12 @@
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+  /* font-size: calc(16px + (24 - 16) * (100vw - 320px) / (1280 - 320)); */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --primary: #1ab188;
   --primary-chng: #20c79a;
-  --bg: #f7f7f7;
-  --br: #24323d;
+ 
 }
 
 * {

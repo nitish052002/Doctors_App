@@ -3,8 +3,7 @@ import "./form.css";
 import axios from "axios";
 import { base_url } from "../ipConfig.json";
 import Loader from "./Loader";
-
-
+import SubmitLoader from "./SubmitLoader";
 
 interface Form {
   name: string;
@@ -38,13 +37,12 @@ const Form: React.FC = () => {
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [isLoading, setLoading] = useState<boolean>(false);
   const [timer, setTimeOut] = useState<number>();
+  const [submitLoader, setSubmiteLoader] = useState(false);
+  const [tooltip, setTooltip] = useState(false);
 
   // function to store form data
 
   const updateFormData = (event: ChangeEvent<HTMLInputElement>) => {
-    // if (!formData.city) {
-    //   setDoctors([]);
-    // }
     if (event.target.name === "city") {
       if (event.target.value.length < 1) {
         setDoctors([]);
@@ -77,7 +75,7 @@ const Form: React.FC = () => {
         const data = result.data;
         if (result.status === 200 && data.length) {
           // Successful response (status code 200)F
-          console.log(doctors)
+          console.log(doctors);
           setDoctors(data);
           setLoading(false);
         }
@@ -99,6 +97,29 @@ const Form: React.FC = () => {
       callback(event.target.value);
     }, 800);
     setTimeOut(newTimer);
+  };
+
+  const onSubmit = () => {
+    setSubmiteLoader(true);
+    setTimeout(() => {
+      setFormData({
+        name: "",
+        contact: Number(),
+        city: "",
+        age: Number(),
+        company: "",
+        any_exp: "",
+        doctor: "",
+        complain: "",
+      });
+      setSubmiteLoader(false);
+      setTooltip(true);
+    }, 2000);
+
+     
+    setTimeout(() => {
+      setTooltip(false);
+    }, 4000);
   };
 
   return (
@@ -125,7 +146,7 @@ const Form: React.FC = () => {
                 name="contact"
                 required
                 onChange={updateFormData}
-                value={formData.contact > 0 ? formData.age : ""}
+                value={formData.contact > 0 ? formData.contact : ""}
               />
               <span>+91</span>
             </label>
@@ -194,10 +215,9 @@ const Form: React.FC = () => {
               onChange={(event) => {
                 fun("any_exp", event);
               }}
-              disabled={(formData.age < 40)}
-
+              disabled={formData.age < 40}
             >
-              <option value="" className="option"   >
+              <option value="" className="option">
                 Any Expreience For Physiotherapy
               </option>
               <option value="yes" className="option">
@@ -244,9 +264,10 @@ const Form: React.FC = () => {
             )}
           </div>
 
-          <button type="submit" className="submit">
-            Submit
+          <button type="submit" className="submit" onClick={onSubmit} disabled={submitLoader}>
+            {submitLoader ? <SubmitLoader /> : "Submit"}
           </button>
+          <div className={tooltip ? "success active" : "success"}>Success</div>
         </form>
       </div>
 

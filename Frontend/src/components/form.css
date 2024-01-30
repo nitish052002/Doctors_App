@@ -42,12 +42,12 @@
   flex-direction: column;
   padding: 1rem 3rem;
   background-color: #1ab188;
-  /* max-width: 500px; */
   width: 100%;
   border-radius: 8px;
   margin: 5rem 1rem;
   gap: 10px;
   margin-left: 3rem;
+  position: relative;
 }
 
 .text-field {
@@ -113,6 +113,11 @@
   border-radius: 8px;
   transition: 0.3s ease;
   cursor: pointer;
+  max-height: 70px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .submit:hover {
@@ -188,6 +193,31 @@
   font-weight: bold; /* Optional: Change this to adjust the font weight */
 }
 
+.form-container .form {
+  position: relative;
+}
+.success {
+  height: 50px;
+  text-align: center;
+  background-color:#b6ffeb;
+  color: #1ab188;
+  position: absolute;
+  top: 30px;
+  left: 24%;
+  font-weight: bold;
+  font-size: 1.5em;
+  padding: 1rem  5rem;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  display: none;
+  transition: 0.3s;
+}
+
+.success.active {
+  display: flex;  
+
+}
 
 @media screen and (max-width: 1200px) {
   .container {
