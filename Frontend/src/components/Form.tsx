@@ -122,6 +122,7 @@ const Form: React.FC = () => {
       });
       setSubmiteLoader(false);
       setTooltip(true);
+      setDoctors([])
     }, 2000);
 
     setTimeout(() => {
