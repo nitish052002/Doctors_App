@@ -68,26 +68,21 @@ const Form: React.FC = () => {
   const callback = async (city: string) => {
     try {
       if (city) {
-        const result = await axios.get(
-          `${base_url}?city=${city.toLowerCase()}`
-        );
-        setLoading(true);
+        setLoading(true);  // Set loading state before making the request
+        const result = await axios.get(`${base_url}?city=${city.toLowerCase()}`);
         const data = result.data;
+  
         if (result.status === 200 && data.length) {
-          // Successful response (status code 200)F
-          console.log(doctors);
           setDoctors(data);
-          setLoading(false);
         }
       }
     } catch (error) {
-      setLoading(true);
       console.log(error);
     } finally {
-      setLoading(false);
+      setLoading(false);  // Set loading state after the request is completed (whether successful or not)
     }
   };
-
+  
   //  imlementing debouncinf when user will search for city
 
   const citySearchHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -95,6 +90,7 @@ const Form: React.FC = () => {
 
     const newTimer = setTimeout(() => {
       callback(event.target.value);
+      console.log(doctors)
     }, 800);
     setTimeOut(newTimer);
   };
@@ -109,6 +105,7 @@ const Form: React.FC = () => {
       !formData.contact ||
       formData.doctor === ""
     ) {
+ 
       return null;
     }
     setSubmiteLoader(true);
